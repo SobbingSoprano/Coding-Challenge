@@ -1,0 +1,22 @@
+body {
+    background: url('graveyard-background.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 700px;
+    margin: 0;
+    border: 0;
+}
+.main-container {
+    height: 600px;
+    background-color: transparent;
+    box-shadow: 2px 2px rgb(185, 185, 185);
+    border-radius: 10%;
+}
+.header {
+    height: 100px;
+    background-color: #EB5B00;
+}
+h1 {
+    color: #FFCC00;
+}
