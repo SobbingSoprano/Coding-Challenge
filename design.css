@@ -3,20 +3,181 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 700px;
     margin: 0;
     border: 0;
+    min-height: 100vh;
 }
 .main-container {
     height: 600px;
-    background-color: transparent;
-    box-shadow: 2px 2px rgb(185, 185, 185);
-    border-radius: 10%;
+    align-items: center;
+    place-content: center;
 }
 .header {
     height: 100px;
-    background-color: #EB5B00;
+    background-image: linear-gradient(to bottom,
+        rgba(53,12,51,0.95) 10%,
+        rgba(37, 9, 35, 0.6) 30%,
+        rgba(53,12,51,0.15) 85%,
+        rgba(45, 123, 165, 0) 90%
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 h1 {
     color: #FFCC00;
+    margin: 0;
+    padding: 6px 12px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    font-family: 'Jolly Lodger';
+    font-size: 30pt;
 }
+.Extra {
+    font-family: 'Rubik Wet Paint';
+    font-size: 25pt;
+    letter-spacing: 2pt;
+    text-shadow: 2px 4px #B12C00;
+}
+.Section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: auto;
+    height: 300px;
+    background-color: transparent;
+    padding: 0 20px;
+    position: relative;
+}
+.address {
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    width: 200px;
+    height: 50%;
+    pointer-events: auto;
+    background: transparent;
+}
+.address-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    background: transparent;
+}
+.address-link:focus-visible {
+    outline: 3px solid rgba(255,204,0,0.9);
+    text-indent: 0;
+    color: #FFCC00;
+    background: rgba(0,0,0,0.25);
+}
+.pointer {
+    display: inline-block;
+    width: 140px;
+    max-width: 25%;
+    opacity: 0.65;
+    transition: transform 1.5s ease-in-out, opacity 1s linear;
+    transform-origin: center;
+    transform: rotate(12deg);
+    pointer-events: auto; /* allow image to receive hover/click; JS will forward clicks to the link */
+    margin-right: 184px;
+    animation: flicker 2.2s infinite both;
+}
+
+.pointer:hover {
+    opacity: 1;
+    transform: rotate(110deg) scale(1.23);
+    animation: flicker 4s ease-out;
+}
+
+/* also allow a programmatic hovering state (used by JS when the link is focused/hovered) */
+.pointer.hovering {
+    opacity: 1;
+    transform: rotate(110deg) scale(1.23);
+    animation: flicker 4s ease-out;
+}
+
+.address:hover + .pointer,
+.address-link:focus-visible + .pointer {
+    transform: rotate(110deg) scale(1.23);
+    opacity: 1;
+    animation-play-state: paused;
+}
+
+
+@keyframes flicker {
+  0%   { opacity: 1; }
+  2%   { opacity: 0.15; }
+  5%   { opacity: 1; }
+  10%  { opacity: 0.7; }
+  14%  { opacity: 1; }
+  20%  { opacity: 0.25; }
+  24%  { opacity: 1; }
+  40%  { opacity: 0.85; }
+  44%  { opacity: 0.4; }
+  48%  { opacity: 1; }
+  62%  { opacity: 0.6; }
+  66%  { opacity: 1; }
+  75%  { opacity: 0.3; }
+  80%  { opacity: 1; }
+  92%  { opacity: 0.5; }
+  96%  { opacity: 1; }
+ 100%  { opacity: 1; }
+}
+
+.lightning {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+.lightning::before,
+.lightning::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    will-change: opacity;
+}
+.lightning::before {
+    /* single bright strike */
+    animation: flash-quick 3.2s ease-out 3;
+    animation-delay: 1.12s;
+}
+.lightning::after {
+    /* longer flicker pattern */
+    animation: flash-flicker 3.2s linear 3;
+    animation-delay: .12s;
+}
+
+@keyframes flash-quick {
+    0%   { opacity: 0; }
+    4%   { opacity: 1; }
+    8%   { opacity: 0; }
+    12%  { opacity: 0.85; }
+    14%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes flash-flicker {
+    0%   { opacity: 0; }
+    6%   { opacity: 0.45; }
+    9%   { opacity: 0; }
+    15%  { opacity: 0.6; }
+    18%  { opacity: 0.15; }
+    22%  { opacity: 0.9; }
+    26%  { opacity: 0; }
+    35%  { opacity: 0.5; }
+    38%  { opacity: 0; }
+    55%  { opacity: 0.35; }
+    100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lightning::before,
+    .lightning::after { animation: none; opacity: 0; }
+}
+
