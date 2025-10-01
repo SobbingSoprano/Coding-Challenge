@@ -1,0 +1,47 @@
+body {
+    position: fixed;
+}
+
+#witch {
+    position: absolute;
+    height: 200px;
+}
+
+#bats {
+    position: absolute;
+    left: 1000px;
+    width: 400px;
+}
+
+#tombstone {
+    position: absolute;
+    top: 380px;
+    left: 350px;
+    height: 500px;
+    width: 1200px;
+    z-index: 1;
+}
+
+#zombie-kid {
+    position: absolute;
+    top: 250px;
+    width: 400px;
+    z-index: 2;
+}
+
+#story {
+    position: absolute;
+    left: 550px;
+    top: 440px;
+    width: 400px;
+    z-index: 2;
+    font-size: 25px;
+    font-family: monospace;
+    color: #FF7518;
+    font-weight: bold;
+    text-align: center;
+}
+
+#story:hover {
+    color: #41ae41;
+}
